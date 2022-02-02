@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-@WebServlet(name = "HelloWorldServlet", urlPatterns = "/home")
+@WebServlet( "/hello")
 public class HelloWorldServlet extends HttpServlet {
 
 @Override
@@ -15,7 +15,10 @@ public class HelloWorldServlet extends HttpServlet {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
 
-        out.println("Hello World!");
+   out.println("<h1>Hello World!</h1>");
+
+    res.sendRedirect("/test-redirect");
+
 
     }
 }
