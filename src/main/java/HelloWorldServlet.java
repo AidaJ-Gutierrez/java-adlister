@@ -15,9 +15,18 @@ public class HelloWorldServlet extends HttpServlet {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
 
-   out.println("<h1>Hello World!</h1>");
+//   out.println("<h1>Hello World!</h1>");
 
-    res.sendRedirect("/test-redirect");
+
+//   Bonus
+ String name =req.getParameter("name");
+ if (name == null ){
+     out.println("Hello Wolrd!");
+ }else{
+     out.println("<h1> Hello" + name + "!</h1>");
+ }
+
+
 
 
     }
