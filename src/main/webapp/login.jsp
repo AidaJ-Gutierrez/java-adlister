@@ -13,7 +13,7 @@
 <body>
 <%@include file="partials/navbar.jsp" %>
 
-
+<%-- NOTE!!!!!! is important that the form has the 'name=' parameter in the inputs, if not the query will not not where to call--%>
 <section class="container-fluid">
     <form class="d-flex justify-content-center" action="${pageContext.request.contextPath}/login.jsp" method="POST">
         <fieldset>
@@ -33,13 +33,20 @@
     </form>
 </section>
 
-<c:choose>
-    <c:when test="${param.username.equals('admin') && param.password.equals('password')}">
-        <c:redirect url="/profile.jsp"/>
-    </c:when>
-</c:choose>
+<%--<c:choose>--%>
+<%--    <c:when test="${param.username.equals('admin') && param.password.equals('password')}">--%>
+<%--        <c:redirect url="/profile.jsp"/>--%>
+<%--    </c:when>--%>
+<%--</c:choose>--%>
 
 
+<%--OR  arbitrary code:--%>
+<%
+    String username = request.getParameter("username");
+    String password = request.getParameter("password");
+    if (username != null && username.equals("admin") && password != null && password.equals("password"))
+        response.sendRedirect("/profile.jsp?username=" + username);
+%>
 
 
 
