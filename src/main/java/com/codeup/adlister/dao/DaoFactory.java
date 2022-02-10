@@ -15,7 +15,7 @@ public class DaoFactory {
 //    Add functionality to the DaoFactory class to return an instance of the users data access object.
     public static Users getUsersDao() {
         if (usersDao == null) {
-            usersDao = (Users) new MySQLAdsDao(config);
+            usersDao =  new MySQLUsersDao(config);
         }
         return usersDao;
     }
