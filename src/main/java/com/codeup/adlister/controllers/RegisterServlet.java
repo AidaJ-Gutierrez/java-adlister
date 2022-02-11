@@ -22,13 +22,16 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
         // TODO: ensure the submitted information is valid
         // TODO: create a new user based off of the submitted information
         // TODO: if a user was successfully created, send them to their profile
+
+
+
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        // need add one more if a confirmation for email is added : String passwordConfirm = req.getParameter(password-confirm)
 
         boolean validUsername = username.length() <= 50 && username.length() > 5;
         boolean validEmail = email.length() <= 50 && email.length() > 5 && email.contains("@");
@@ -46,6 +49,18 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("/register");
         }
 
+
+        //David's solution:
+//        String username = request.getParameter("username");
+//        String email = request.getParameter("email");
+//        String password = request.getParameter("password");
+//
+//        if (username.trim().isEmpty()||email.trim().isEmpty() || password.trim().isEmpty() || !passwordConfirm.equals(password)|| DaoFactory.getUsersDao().findByUsername(username).getUsername() !=null){
+//          response.sendRedirect("/register");
+//        }else{
+        // User user = new User(username, email, password)
+//       DAoFactory.getUsersDao().insert(user);
+        //request.getSession().setAttribute("user", username);
 
     }
 }

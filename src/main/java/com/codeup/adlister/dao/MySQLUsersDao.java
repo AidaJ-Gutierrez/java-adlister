@@ -8,7 +8,7 @@ import java.sql.*;
 
 
 public class MySQLUsersDao implements Users{
-
+//cpied from the MySQLadsDao so there is no difference between daos
     private Connection connection = null;
 
     public MySQLUsersDao(Config config) {
@@ -28,8 +28,10 @@ public class MySQLUsersDao implements Users{
 
     @Override
     public User findByUsername(String username) {
+        String searchQuery= "SELECT * FROM users WHERE username = ?";
+        User user = new User();
         try {
-        String searchQuery= "SELECT * FROM users WHERE username LIKE ?";
+
         PreparedStatement stmt = connection.prepareStatement(searchQuery);
         stmt.setString(1, username);
         ResultSet rs = stmt.executeQuery();
@@ -49,8 +51,9 @@ public class MySQLUsersDao implements Users{
 
     @Override
     public Long insert(User user) {
+        String query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        long id = 0; // this is done so it return something even if is empty.
         try {
-            String query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());

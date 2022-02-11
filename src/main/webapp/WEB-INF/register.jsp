@@ -31,7 +31,8 @@
             <label for="password">Password</label>
             <input id="password" name="password" class="form-control" type="password">
         </div>
-        <input type="submit" class="btn btn-block btn-primary">
+<%--        create a new field fror confirming the email.--%>
+        <input type="submit" class="btn btn-block btn-primary" value="Register">
     </form>
 </div>
 
